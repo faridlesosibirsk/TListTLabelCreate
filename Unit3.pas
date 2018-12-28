@@ -39,24 +39,23 @@ begin
       WindowState := wsMaximized
     else
       WindowState := wsNormal;
-    // OneLabel := TLabel.create(self);
     OneLabels := TList<TLabel>.create;
-    for i := 0 to 1 do
+    for i := 0 to 3 do   // add 4 Labels from INI file
     begin
       OneLabel := TLabel.create(self);
-      OneLabel.Left := Ini.ReadInteger('Label'+inttostr(i+1), 'Left', 0);
-      OneLabel.Top := Ini.ReadInteger('Label'+inttostr(i+1), 'Top', 0);
-      OneLabel.Width := Ini.ReadInteger('Label'+inttostr(i+1), 'Width', 0);
-      OneLabel.Height := Ini.ReadInteger('Label'+inttostr(i+1), 'Height', 0);
-      OneLabel.Caption := Ini.ReadString('Label'+inttostr(i+1), 'Caption', '0');
+      OneLabel.Left := Ini.ReadInteger('Label' + inttostr(i + 1), 'Left', 0);
+      OneLabel.Top := Ini.ReadInteger('Label' + inttostr(i + 1), 'Top', 0);
+      OneLabel.Width := Ini.ReadInteger('Label' + inttostr(i + 1), 'Width', 0);
+      OneLabel.Height := Ini.ReadInteger('Label' + inttostr(i + 1),
+        'Height', 0);
+      OneLabel.Caption := Ini.ReadString('Label' + inttostr(i + 1),
+        'Caption', '0');
       OneLabel.Parent := self;
       OneLabels.Add(OneLabel);
-      //OneLabel.Destroy;
-      //OneLabel.Free;
     end;
-
   finally
-    Ini.Free;
+    OneLabels[1].free;   // delete second Label from TList<TLabel>
+    Ini.free;
   end;
 end;
 

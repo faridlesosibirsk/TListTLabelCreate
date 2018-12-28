@@ -13,6 +13,8 @@ type
     Label1: TLabel;
     Button1: TButton;
     Label2: TLabel;
+    Label3: TLabel;
+    Label4: TLabel;
     procedure Button1Click(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private
@@ -30,9 +32,7 @@ implementation
 
 procedure TForm1.Button1Click(Sender: TObject);
 begin
-
   Form3.Visible := true;
-
 end;
 
 procedure TForm1.FormClose(Sender: TObject; var Action: TCloseAction);
@@ -55,6 +55,16 @@ begin
     Ini.WriteInteger('Label2', 'Width', Label2.Width);
     Ini.WriteInteger('Label2', 'Height', Label2.Height);
     Ini.WriteString('Label2', 'Caption', Label2.caption);
+    Ini.WriteInteger('Label3', 'Left', Label3.Left);
+    Ini.WriteInteger('Label3', 'Top', Label3.Top);
+    Ini.WriteInteger('Label3', 'Width', Label3.Width);
+    Ini.WriteInteger('Label3', 'Height', Label3.Height);
+    Ini.WriteString('Label3', 'Caption', Label3.caption);
+    Ini.WriteInteger('Label4', 'Left', Label4.Left);
+    Ini.WriteInteger('Label4', 'Top', Label4.Top);
+    Ini.WriteInteger('Label4', 'Width', Label4.Width);
+    Ini.WriteInteger('Label4', 'Height', Label4.Height);
+    Ini.WriteString('Label4', 'Caption', Label4.caption);
   finally
     Ini.Free;
   end;
