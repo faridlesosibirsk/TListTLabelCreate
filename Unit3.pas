@@ -10,6 +10,7 @@ uses
 
 type
   TForm3 = class(TForm)
+    Label1: TLabel;
     procedure FormCreate(Sender: TObject);
   private
     OneLabels: TList<TLabel>;
@@ -27,9 +28,10 @@ implementation
 procedure TForm3.FormCreate(Sender: TObject);
 var
   Ini: TIniFile;
-  i: integer;
+  i, k: integer;
   OneLabel: TLabel;
 begin
+  k := 0;
   Ini := TIniFile.create(ChangeFileExt(Application.ExeName, '.INI'));
   try
     Top := Ini.ReadInteger('Form', 'Top', 100);
@@ -40,7 +42,7 @@ begin
     else
       WindowState := wsNormal;
     OneLabels := TList<TLabel>.create;
-    for i := 0 to 3 do   // add 4 Labels from INI file
+    for i := 0 to 3 do // add 4 Labels from INI file
     begin
       OneLabel := TLabel.create(self);
       OneLabel.Left := Ini.ReadInteger('Label' + inttostr(i + 1), 'Left', 0);
@@ -54,7 +56,9 @@ begin
       OneLabels.Add(OneLabel);
     end;
   finally
-    OneLabels[1].free;   // delete second Label from TList<TLabel>
+    OneLabels[1].free; // delete 2 Label from TList<TLabel>,total 4,draw 3
+    OneLabels.Delete(1);// delete 2 Label from TList<TLabel>total 3,draw 3
+    OneLabels.Destroy; // Destroy TList<TLabel>, total 0 labels, draw 3 labels
     Ini.free;
   end;
 end;

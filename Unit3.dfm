@@ -14,4 +14,10 @@ object Form3: TForm3
   OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
+  object Label1: TLabel
+    Left = 136
+    Top = 24
+    Width = 3
+    Height = 13
+  end
 end
