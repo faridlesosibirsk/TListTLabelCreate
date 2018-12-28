@@ -5,7 +5,7 @@ interface
 uses
   Generics.Collections, Winapi.Windows, Winapi.Messages, System.SysUtils,
   System.Variants,
-  System.Classes, Vcl.Graphics, unit2,
+  System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, IniFiles, Vcl.StdCtrls;
 
 type
